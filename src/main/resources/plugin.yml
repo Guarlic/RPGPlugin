@@ -1,0 +1,8 @@
+name: RPGPlugin
+version: '${project.version}'
+main: guarlic.rpgplugin.RPGPlugin
+api-version: 1.19
+depend:
+  - Citizens
+authors: [ Guarlic ]
+description: RPG Server plugin
