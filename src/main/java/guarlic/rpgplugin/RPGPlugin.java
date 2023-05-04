@@ -7,6 +7,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerLevelChangeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import guarlic.rpgplugin.NPCInteract.NPCInteract;
@@ -48,8 +49,20 @@ public final class RPGPlugin extends JavaPlugin implements Listener {
                 NPCInteract.Kalis(p);
                 break;
 
-            case "[보급관] 레이너":
+            case "[ 보급관 ] 레이너":
                 NPCInteract.Raynor(p);
+                break;
+
+            case "[ 여관 주인 ] 패트릭":
+                NPCInteract.Patrick(p);
+                break;
+
+            case "사트":
+                NPCInteract.Sat(p);
+                break;
+
+            case "[ 대장장이 ] 판트":
+                NPCInteract.Pant(p);
                 break;
         }
     }
@@ -59,14 +72,19 @@ public final class RPGPlugin extends JavaPlugin implements Listener {
         // Interaction with Shop GUI
         switch (e.getView().getTitle()) {
             case "넥시리아 상점":
-                e.setCancelled(true);
                 ShopInteract.NexiriaShop(e);
                 break;
 
             case "크로노스 보급고":
-                e.setCancelled(true);
                 ShopInteract.ChronosSupplyDepot(e);
                 break;
         }
+    }
+
+    @EventHandler
+    public void levelUp(PlayerLevelChangeEvent e) {
+        Player p = e.getPlayer();
+
+        p.sendMessage(ChatColor.YELLOW + "레벨업 하였습니다! (" + p.getLevel() + ")");
     }
 }

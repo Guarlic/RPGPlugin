@@ -3,7 +3,6 @@ package guarlic.rpgplugin.NPCInteract;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -13,10 +12,12 @@ import java.util.Vector;
 
 public class NPCInteract {
     public static void Skolit(Player p) {
+        // Skolit NPC Script
         p.sendMessage(ChatColor.GRAY + "스콜리트: " + ChatColor.WHITE + "방해하지 마. 2차 마법진 함수의 마나상수의 존재를 증명하고 있으니깐.");
     }
 
     public static void Kalis(Player p) {
+        // Kalis NPC Shop
         p.sendMessage(ChatColor.GOLD + "칼리스: " + ChatColor.WHITE + "팝니다 팔아요~");
 
         Inventory i = Bukkit.createInventory(null, 54, "넥시리아 상점");
@@ -51,6 +52,7 @@ public class NPCInteract {
     }
 
     public static void Raynor(Player p) {
+        // Raynor NPC Shop
         p.sendMessage(ChatColor.DARK_GRAY + "레이너: " + ChatColor.WHITE + "가져갈거 있으면 가져가.");
 
         Inventory i2 = Bukkit.createInventory(null, 54, "크로노스 보급고");
@@ -81,5 +83,17 @@ public class NPCInteract {
         i2.setItem(13, shield);
 
         p.openInventory(i2);
+    }
+
+    public static void Patrick(Player p) {
+        p.sendMessage(ChatColor.DARK_GRAY + "패트릭: " + ChatColor.WHITE + "어서오세요! 외부인은 처음인데요?!\n       위로 가서 휴식을 취하는건 어떠세요? (체크포인트)");
+    }
+
+    public static void Sat(Player p) {
+        p.sendMessage(ChatColor.DARK_GRAY + "사트: " + ChatColor.WHITE + "부대에 있는 우리 형.. 괜찮은거겠지...");
+    }
+
+    public static void Pant(Player p) {
+        p.sendMessage(ChatColor.DARK_GRAY + "판트: " + ChatColor.WHITE + "(흠흠) 무슨 일이지?!");
     }
 }

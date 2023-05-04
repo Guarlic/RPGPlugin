@@ -1,5 +1,5 @@
 name: RPGPlugin
-version: '${project.version}'
+version: '{project.version}'
 main: guarlic.rpgplugin.RPGPlugin
 api-version: 1.19
 depend:

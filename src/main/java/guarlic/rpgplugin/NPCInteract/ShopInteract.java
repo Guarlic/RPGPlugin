@@ -13,6 +13,9 @@ import java.util.Vector;
 
 public class ShopInteract {
     public static void NexiriaShop(InventoryClickEvent e) {
+        // Kalis NPC Shop
+        e.setCancelled(true);
+
         Player p = (Player) e.getWhoClicked();
 
         if (e.getRawSlot() == 11) {
@@ -78,6 +81,9 @@ public class ShopInteract {
     }
 
     public static void ChronosSupplyDepot(InventoryClickEvent e) {
+        // Raynor NPC Shop
+        e.setCancelled(true);
+
         Player p = (Player) e.getWhoClicked();
 
         if (e.getRawSlot() == 11) {
