@@ -37,12 +37,7 @@ public class ShopInteract {
                 p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 5, 1);
                 p.getInventory().addItem(noob_sword);
 
-                for (ItemStack i : p.getInventory().all(Material.GOLD_INGOT).values()) {
-                    if (i.getType().equals(Material.GOLD_INGOT)) {
-                        i.setAmount(i.getAmount() - 1);
-                        break;
-                    }
-                }
+                RemoveGold(p, 1);
             }
             else {
                 p.sendMessage(ChatColor.RED + "구매 실패; 중복된 아이템/재료 부족");
@@ -67,12 +62,7 @@ public class ShopInteract {
                 p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 5, 1);
                 p.getInventory().addItem(intermediate_sword);
 
-                for (ItemStack i : p.getInventory().all(Material.GOLD_INGOT).values()) {
-                    if (i.getType().equals(Material.GOLD_INGOT)) {
-                        i.setAmount(i.getAmount() - 10);
-                        break;
-                    }
-                }
+                RemoveGold(p, 10);
             }
             else {
                 p.sendMessage(ChatColor.RED + "구매 실패; 중복된 아이템/재료 부족");
@@ -106,12 +96,7 @@ public class ShopInteract {
                 p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 5, 1);
                 p.getInventory().addItem(adept_sword);
 
-                for (ItemStack i : p.getInventory().all(Material.GOLD_INGOT).values()) {
-                    if (i.getType().equals(Material.GOLD_INGOT)) {
-                        i.setAmount(i.getAmount() - 30);
-                        break;
-                    }
-                }
+                RemoveGold(p, 30);
             }
             else {
                 p.sendMessage(ChatColor.RED + "구매 실패; 중복된 아이템/재료 부족");
@@ -136,12 +121,7 @@ public class ShopInteract {
                 p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 5, 1);
                 p.getInventory().addItem(shield);
 
-                for (ItemStack i : p.getInventory().all(Material.GOLD_INGOT).values()) {
-                    if (i.getType().equals(Material.GOLD_INGOT)) {
-                        i.setAmount(i.getAmount() - 40);
-                        break;
-                    }
-                }
+                RemoveGold(p, 40);
             }
             else {
                 p.sendMessage(ChatColor.RED + "구매 실패; 중복된 아이템/재료 부족");
@@ -150,6 +130,7 @@ public class ShopInteract {
     }
 
     public static int GoldCount(Player p) {
+        // get amount of gold ingot in player's inventory
         int count = 0;
 
         PlayerInventory inv = p.getInventory();
@@ -159,5 +140,23 @@ public class ShopInteract {
                 count += i.getAmount();
 
         return count;
+    }
+
+    public static void RemoveGold(Player p, int amount) {
+        // remove gold ingots in players' inventory
+        for (ItemStack i : p.getInventory().all(Material.GOLD_INGOT).values()) {
+            if (i.getType().equals(Material.GOLD_INGOT)) {
+                if (i.getAmount() < amount) {
+                    amount -= i.getAmount();
+                    i.setAmount(0);
+
+                    continue;
+                }
+
+                i.setAmount(i.getAmount() - amount);
+
+                break;
+            }
+        }
     }
 }

@@ -94,6 +94,6 @@ public class NPCInteract {
     }
 
     public static void Pant(Player p) {
-        p.sendMessage(ChatColor.DARK_GRAY + "판트: " + ChatColor.WHITE + "(흠흠) 무슨 일이지?!");
+        p.sendMessage(ChatColor.DARK_GRAY + "판트: " + ChatColor.WHITE + "자네는 아직 자격이 부족해..");
     }
 }

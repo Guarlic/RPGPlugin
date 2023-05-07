@@ -1,9 +1,11 @@
 package guarlic.rpgplugin;
 
 import net.citizensnpcs.api.event.NPCRightClickEvent;
+import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -83,8 +85,16 @@ public final class RPGPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void levelUp(PlayerLevelChangeEvent e) {
+        if (e.getOldLevel() > e.getNewLevel()) return;
+
         Player p = e.getPlayer();
 
-        p.sendMessage(ChatColor.YELLOW + "레벨업 하였습니다! (" + p.getLevel() + ")");
+        p.sendMessage(ChatColor.GREEN + "레벨업 하였습니다! (" + ChatColor.YELLOW + e.getOldLevel() + " -> " + e.getNewLevel() + ChatColor.GREEN + ")");
+
+        if (e.getNewLevel() % 10 == 0) {
+            p.getWorld().playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, (float) 1.0, (float) 1.1);
+        } else {
+            p.getWorld().playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 2);
+        }
     }
 }
