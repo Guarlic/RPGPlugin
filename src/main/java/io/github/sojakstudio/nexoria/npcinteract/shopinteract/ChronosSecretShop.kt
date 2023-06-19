@@ -2,7 +2,7 @@ package io.github.sojakstudio.nexoria.npcinteract.shopinteract
 
 import io.github.sojakstudio.nexoria.interfaces.Name
 import io.github.sojakstudio.nexoria.items.itemmake.MakeItem
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -15,16 +15,16 @@ class ChronosSecretShop : ShopInteract() {
                 val strangeSword = MakeItem.createBreakableItemStack(
                     Material.GOLDEN_SWORD,
                     arrayOf(
-                        "수상한 검이다. ${ChatColor.RED}(금괴 200개)",
+                        "수상한 검이다. ${NamedTextColor.RED}(금괴 200개)",
                     ),
-                    "${ChatColor.GRAY}수상한 검"
+                    "${NamedTextColor.GRAY}수상한 검"
                 )
 
                 purchaseItem(
                     player,
                     strangeSword,
                     200,
-                    "수상한 검을 구매했습니다 ${ChatColor.RED}(-금괴 200개)"
+                    "수상한 검을 구매했습니다 ${NamedTextColor.RED}(-금괴 200개)"
                 )
             }
         }

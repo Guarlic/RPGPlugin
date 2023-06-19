@@ -1,7 +1,7 @@
 package io.github.sojakstudio.nexoria.items.itemuse
 
 import io.github.sojakstudio.nexoria.items.itemmake.MakeItem
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.Sound
@@ -15,7 +15,7 @@ class ExpertSword : ItemUse() {
         val location = player.location
         val world = player.world
 
-        player.sendMessage("${ChatColor.BOLD}${ChatColor.AQUA}숙련자의 검이 울며 반응한다...")
+        player.sendMessage("${NamedTextColor.AQUA}숙련자의 검이 울며 반응한다...")
 
         player.setCooldown(Material.DIAMOND_SWORD, 300)
 
@@ -37,8 +37,8 @@ class ExpertSword : ItemUse() {
             MakeItem.createUnbreakableItemStack(
                 Material.DIAMOND_SWORD,
                 arrayOf(
-                    "숙련자의 검이다. ${ChatColor.RED}(금괴 100개)",
+                    "숙련자의 검이다. ${NamedTextColor.RED}(금괴 100개)",
                 ),
-                "${ChatColor.GOLD}숙련자의 검"
+                "${NamedTextColor.GOLD}숙련자의 검"
             )
 }

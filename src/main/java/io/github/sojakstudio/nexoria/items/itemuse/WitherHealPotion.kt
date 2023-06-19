@@ -1,6 +1,7 @@
 package io.github.sojakstudio.nexoria.items.itemuse
 
 import io.github.sojakstudio.nexoria.items.itemmake.MakeItem
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.*
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -15,14 +16,14 @@ class WitherHealPotion : ItemUse() {
 
         val witherHealPotion = MakeItem.createPotionStack(
             arrayOf(
-                "위더 회복 포션이다. ${ChatColor.RED}(금괴 35개)",
-                "${ChatColor.YELLOW}위더 효과를 제거하며, 재생 효과를 부여한다.",
+                "위더 회복 포션이다. ${NamedTextColor.RED}(금괴 35개)",
+                "${NamedTextColor.YELLOW}위더 효과를 제거하며, 재생 효과를 부여한다.",
             ),
-            "${ChatColor.LIGHT_PURPLE}위더 회복 포션",
+            "${NamedTextColor.LIGHT_PURPLE}위더 회복 포션",
             Color.GRAY
         )
 
-        player.sendMessage("${ChatColor.LIGHT_PURPLE}위더 회복 포션을 사용하였습니다!")
+        player.sendMessage("${NamedTextColor.LIGHT_PURPLE}위더 회복 포션을 사용하였습니다!")
 
         player.setCooldown(Material.POTION, 200)
 
@@ -39,10 +40,10 @@ class WitherHealPotion : ItemUse() {
         get () =
             MakeItem.createPotionStack(
                 arrayOf(
-                    "위더 회복 포션이다. ${ChatColor.RED}(금괴 35개)",
-                    "${ChatColor.YELLOW}위더 효과를 제거하며, 재생 효과를 부여한다.",
+                    "위더 회복 포션이다. ${NamedTextColor.RED}(금괴 35개)",
+                    "${NamedTextColor.YELLOW}위더 효과를 제거하며, 재생 효과를 부여한다.",
                 ),
-                "${ChatColor.LIGHT_PURPLE}위더 회복 포션",
+                "${NamedTextColor.LIGHT_PURPLE}위더 회복 포션",
                 Color.GRAY
             )
 }

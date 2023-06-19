@@ -1,7 +1,7 @@
 package io.github.sojakstudio.nexoria.commands
 
 import io.github.sojakstudio.nexoria.interfaces.Name
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
@@ -22,10 +22,10 @@ class Announce : Commands() {
         }
 
         for (_player in players) {
-            _player.sendMessage("${ChatColor.GOLD}[ 공지 ] ${ChatColor.GREEN}${name}: ${ChatColor.WHITE}$text")
+            _player.sendMessage("${NamedTextColor.GOLD}[ 공지 ] ${NamedTextColor.GREEN}${name}: ${NamedTextColor.WHITE}$text")
             _player.sendTitle(
-                "${ChatColor.GOLD}[ 공지 ]",
-                "${ChatColor.GREEN}${name}: ${ChatColor.WHITE}$text",
+                "${NamedTextColor.GOLD}[ 공지 ]",
+                "${NamedTextColor.GREEN}${name}: ${NamedTextColor.WHITE}$text",
                 0,
                 100,
                 0

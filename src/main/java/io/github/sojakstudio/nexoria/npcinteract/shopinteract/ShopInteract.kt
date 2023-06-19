@@ -1,7 +1,7 @@
 package io.github.sojakstudio.nexoria.npcinteract.shopinteract
 
 import io.github.sojakstudio.nexoria.lists.duplicatePurchaseItemList
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.entity.Player
@@ -38,7 +38,9 @@ open class ShopInteract {
             count++
         }
 
-        return count
+        player.sendMessage("$count")
+
+        return count - 1
     }
 
     fun removePlayerGold(player: Player, amount: Int) {
@@ -72,23 +74,30 @@ open class ShopInteract {
         val world = player.world
 
         if (getPlayerEmpty(player) == 0) {
-            player.sendMessage(ChatColor.RED.toString() + "구매 실패; 인벤토리 공간 부족")
+            player.sendMessage("${NamedTextColor.RED}구매 실패; 인벤토리 공간 부족")
             world.playSound(location, Sound.ITEM_TRIDENT_HIT, 5f, 0f)
 
             return
         }
 
-        for (material in duplicatePurchaseItemList) {
-            if (hasItem && type != material) {
-                player.sendMessage(ChatColor.RED.toString() + "구매 실패; 중복된 아이템")
-                world.playSound(location, Sound.ITEM_TRIDENT_HIT, 5f, 0f)
+        var canDuplicatePurchase = false
 
-                return
-            }
+        for (material in duplicatePurchaseItemList) {
+            if (type != material) continue
+
+            canDuplicatePurchase = true
+            break
+        }
+
+        if (hasItem && !canDuplicatePurchase) {
+            player.sendMessage("${NamedTextColor.RED}구매 실패; 중복된 아이템")
+            world.playSound(location, Sound.ITEM_TRIDENT_HIT, 5f, 0f)
+
+            return
         }
 
         if (getPlayerGold(player) < requireGoldAmount) {
-            player.sendMessage(ChatColor.RED.toString() + "구매 실패; 재료 부족")
+            player.sendMessage("${NamedTextColor.RED}구매 실패; 재료 부족")
             world.playSound(location, Sound.ITEM_TRIDENT_HIT, 5f, 0f)
 
             return

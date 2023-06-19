@@ -1,7 +1,7 @@
 package io.github.sojakstudio.nexoria.commands
 
 import io.github.sojakstudio.nexoria.interfaces.Name
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
@@ -14,7 +14,7 @@ class PlayersList : Commands() {
         var text = "< 유저 리스트 >\n"
 
         if (players.isEmpty()) {
-            player.sendMessage("${ChatColor.RED}참여해있는 유저가 없습니다")
+            player.sendMessage("${NamedTextColor.RED}참여해있는 유저가 없습니다")
 
             return
         }
@@ -23,12 +23,12 @@ class PlayersList : Commands() {
             val name = _player.name
 
             if (_player.isOp) {
-                text += "${ChatColor.GOLD}${name}${ChatColor.GRAY}, ${ChatColor.RED}*\n"
+                text += "${NamedTextColor.GOLD}${name}${NamedTextColor.GRAY}, ${NamedTextColor.RED}*\n"
 
                 continue
             }
 
-            text += "${name}${ChatColor.GRAY},\n"
+            text += "${name}${NamedTextColor.GRAY},\n"
         }
 
         player.sendMessage(text)

@@ -3,7 +3,7 @@ package io.github.sojakstudio.nexoria
 import io.github.sojakstudio.nexoria.interfaces.Name
 import io.github.sojakstudio.nexoria.lists.*
 import net.citizensnpcs.api.event.NPCRightClickEvent
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -21,8 +21,8 @@ class EventListener : Listener {
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
 
-        player.sendMessage("""${ChatColor.GREEN}https://cdn.discordapp.com/attachments/1085437499557560411/1099305024250724524/RPGSoundPack.zip
-${ChatColor.GRAY} 리소스팩을 다운로드 하시면 브금을 들으실 수 있어여! (토글명령어: /배경음악)""")
+        player.sendMessage("""${NamedTextColor.GREEN}https://cdn.discordapp.com/attachments/1085437499557560411/1099305024250724524/RPGSoundPack.zip
+${NamedTextColor.GRAY} 리소스팩을 다운로드 하시면 브금을 들으실 수 있어여! (토글명령어: /배경음악)""")
     }
 
     @EventHandler
@@ -93,7 +93,7 @@ ${ChatColor.GRAY} 리소스팩을 다운로드 하시면 브금을 들으실 수
         val location = player.location
         val world = player.world
 
-        player.sendMessage("${ChatColor.GREEN}레벨업 하였습니다! (${ChatColor.YELLOW} ${oldLevel} -> ${newLevel} ${ChatColor.GREEN})")
+        player.sendMessage("${NamedTextColor.GREEN}레벨업 하였습니다! (${NamedTextColor.YELLOW} ${oldLevel} -> ${newLevel} ${NamedTextColor.GREEN})")
 
         if (newLevel % 10 == 0) world.playSound(location, Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0.toFloat(), 1.1.toFloat())
         else world.playSound(location, Sound.UI_TOAST_CHALLENGE_COMPLETE, 1f, 2f)
@@ -104,6 +104,6 @@ ${ChatColor.GRAY} 리소스팩을 다운로드 하시면 브금을 들으실 수
         val player = event.player
         val name = player.name
 
-        player.sendMessage("${ChatColor.RED}${name}님, 사망하셨습니다.")
+        player.sendMessage("${NamedTextColor.RED}${name}님, 사망하셨습니다.")
     }
 }

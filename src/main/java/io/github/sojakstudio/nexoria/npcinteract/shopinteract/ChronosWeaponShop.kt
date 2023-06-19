@@ -2,6 +2,7 @@ package io.github.sojakstudio.nexoria.npcinteract.shopinteract
 
 import io.github.sojakstudio.nexoria.interfaces.Name
 import io.github.sojakstudio.nexoria.items.itemmake.MakeItem
+import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.*
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
@@ -16,16 +17,16 @@ class ChronosWeaponShop : ShopInteract() {
                 val expertSword = MakeItem.createUnbreakableItemStack(
                     Material.DIAMOND_SWORD,
                     arrayOf(
-                        "숙련자의 검이다. ${ChatColor.RED}(금괴 100개)",
+                        "숙련자의 검이다. ${NamedTextColor.RED}(금괴 100개)",
                     ),
-                    "${ChatColor.GOLD}숙련자의 검"
+                    "${NamedTextColor.GOLD}숙련자의 검"
                 )
 
                 purchaseItem(
                     player,
                     expertSword,
                     100,
-                    "숙련자의 검을 구매했습니다 ${ChatColor.RED}(-금괴 100개)"
+                    "숙련자의 검을 구매했습니다 ${NamedTextColor.RED}(-금괴 100개)"
                 )
             }
             13 -> {
@@ -36,7 +37,7 @@ class ChronosWeaponShop : ShopInteract() {
                 val shabbyBow = MakeItem.createUnbreakableItemStack(
                     Material.BOW,
                     arrayOf(
-                        "허름한 활이다. ${ChatColor.RED}(금괴 30개)",
+                        "허름한 활이다. ${NamedTextColor.RED}(금괴 30개)",
                     ),
                     "허름한 활"
                 )
@@ -44,14 +45,14 @@ class ChronosWeaponShop : ShopInteract() {
                 shabbyBow.addEnchantment(Enchantment.ARROW_INFINITE, 1)
 
                 if (!hasArrow && getPlayerEmpty(player) < 2) {
-                    player.sendMessage("${ChatColor.RED}구매 실패; 인벤토리 공간 부족")
+                    player.sendMessage("${NamedTextColor.RED}구매 실패; 인벤토리 공간 부족")
                     world.playSound(location, Sound.ITEM_TRIDENT_HIT, 5f, 0f)
 
                     return
                 }
 
                 if (getPlayerGold(player) < 30) {
-                    player.sendMessage("${ChatColor.RED}구매 실패; 재료 부족")
+                    player.sendMessage("${NamedTextColor.RED}구매 실패; 재료 부족")
                     world.playSound(location, Sound.ITEM_TRIDENT_HIT, 5f, 0f)
 
                     return
@@ -61,7 +62,7 @@ class ChronosWeaponShop : ShopInteract() {
                     player,
                     shabbyBow,
                     30,
-                    "허름한 활을 구매했습니다 ${ChatColor.RED}(-금괴 30개)"
+                    "허름한 활을 구매했습니다 ${NamedTextColor.RED}(-금괴 30개)"
                 )
 
                 if (hasArrow) return
