@@ -1,0 +1,32 @@
+name: Nexoria-NEW
+version: '${version}'
+main: io.github.sojakstudio.nexorianew.Nexoria_NEW
+api-version: '1.20'
+depend: [ Citizens ]
+description: RPG Server plugin
+commands:
+  스폰:
+    description: '스폰으로 이동합니다.'
+    aliases: [ ㅅㅍ ]
+    usage: '/스폰'
+
+  내스폰:
+    description: '나의 스폰으로 이동합니다.'
+    aliases: [ ㄴㅅㅍ ]
+    usage: '/내스폰'
+
+  쓰레기통:
+    description: '쓰레기통을 엽니다.'
+    aliases: [ ㅆㄹㄱㅌ ]
+    usage: '/쓰레기통'
+
+  공지:
+    description: '공지를 올립니다. *'
+    aliases: [ ㄱㅈ ]
+    usage: '/공지 (내용)'
+    permission: op
+
+  유저리스트:
+    description: '유저들의 리스트를 보여줍니다.'
+    aliases: [ ㅇㅈㄹㅅㅌ ]
+    usage: '/유저리스트'
